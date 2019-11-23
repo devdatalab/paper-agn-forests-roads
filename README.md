@@ -46,4 +46,3 @@ with ssc install.
 - ftools
 - coefplot
 
-- test
