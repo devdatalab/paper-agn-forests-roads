@@ -1,6 +1,6 @@
 /* all of the following paths must be set */
-global out ~/tmp/deforest
-global tmp ~/Dropbox/sh/shared-teevrat/submissions/2019-04-ej-final/agn-roads-forests-data
+global out
+global tmp
 
 if mi("$out") | mi("$tmp") {
   display as error "Globals 'out' and 'tmp' must be set for this to run."
