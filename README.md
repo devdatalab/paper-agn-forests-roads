@@ -39,6 +39,10 @@ results. However, some of the estimation output commands (like estout)
 may fail if certain Stata packages are missing. These can be replaced
 by the estimation output commands preferred by the user.
 
+Please note we use globals for pathnames which will cause errors if
+filepaths have spaces in them. Please store code and data in paths
+that can be accessed without spaces in filenames. 
+
 This code requires at least the following stata packages to be installed
 with ssc install.
 - reghdfe
