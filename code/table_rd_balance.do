@@ -95,7 +95,6 @@ keep if year == 2013
 do dc_density.do
 
 /* pooled 500 1000 */
-set scheme pn
 dc_density pop_rd if (inrange(pc01_pca_tot_p, 400, 599) | inrange(pc01_pca_tot_p, 900, 1099)), breakpoint(0) b(1) generate(Xj Yj r0 fhat se_fhat) xtitle("Normalized Population") ytitle("Density")
 drop Xj Yj r0 fhat se_fhat
 graphout deforest_mccrary, pdf

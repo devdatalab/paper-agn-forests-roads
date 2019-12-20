@@ -133,32 +133,3 @@ foreach i in 0 50 100 150 {
 estout_default using $out/table_gq, order($v1 $v2 $v3) prefoot($prefoot) mlabel("Log Forest" "Avg Forest" "Log Forest" "Average Forest")
 estmod_header  using $out/table_gq.tex, cstring(" & \multicolumn{2}{c}{\underline{GQ (Treatment)}} & \multicolumn{2}{c}{\underline{NSEW (Placebo)}}")
 
-/**************************/
-/* NSEW TREATMENT EFFECTS */
-/**************************/
-eststo clear
-eststo: reghdfe ln_forest c_ns_0 c_ns_50 c_ns_100 c_ns_150 ///
-  dist_ns_cut_ns_cons_0   dist_ns_cut_ns_cons_50   dist_ns_cut_ns_cons_100   dist_ns_cut_ns_cons_150 ///
-  dist_ns_cut_ns_post_0   dist_ns_cut_ns_post_50   dist_ns_cut_ns_post_100   dist_ns_cut_ns_post_150 ///
-  tdist10 tdist50 tdist500 tdist1000 ///
-  if year <= $ns_post_end & dist_ns <= $end_dist & dist_gq > 100 [aw=num_cells], absorb(sygroup c.tdist100##i.year c.p1##i.year c.ln_forest_2000##i.year) cluster(sdsgroup)
-  
-/* avg forest */
-eststo: reghdfe avg_forest c_ns_0 c_ns_50 c_ns_100 c_ns_150 ///
-  dist_ns_cut_ns_cons_0   dist_ns_cut_ns_cons_50   dist_ns_cut_ns_cons_100   dist_ns_cut_ns_cons_150 ///
-  dist_ns_cut_ns_post_0   dist_ns_cut_ns_post_50   dist_ns_cut_ns_post_100   dist_ns_cut_ns_post_150 ///
-  tdist10 tdist50 tdist500 tdist1000 ///
-  if year <= $ns_post_end & dist_ns <= $end_dist & dist_gq > 100 [aw=num_cells], absorb(sygroup c.tdist100##i.year c.p1##i.year c.avg_forest_2000##i.year) cluster(sdsgroup)
-
-do label_vars.do
-do label_reg_vars.do
-global prefoot "\hline"
-global v1
-global v2
-global v3
-foreach i in 0 50 100 150 {
-  global v1 $v1 dist_ns_cut_ns_cons_`i'
-  global v2 $v2 dist_ns_cut_ns_post_`i'
-  global v3 $v3 c_ns_`i'
-}
-estout_default using $out/table_nsew, order($v1 $v2 $v3) prefoot($prefoot) mlabel("Log Forest" "Avg Forest")

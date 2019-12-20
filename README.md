@@ -28,7 +28,7 @@ following steps:
 
 3. Open the do file make_deforest_ej.do, and set the globals "out" and
    "tmp".  "out" is the target folder for all outputs, such as tables
-   and graphs. "tmp" is the folder where the data files and
+   and graphs. "tmp" is the folder for the data files and
    temporary data files that will be created during the rebuild.
 
 4. Run the do file make_deforest_ej.do.  This will run through all the
@@ -49,4 +49,8 @@ with ssc install.
 - estout
 - ftools
 - coefplot
+- running
+
+This code was tested using Stata 14.0. Some of this code generates
+datasets which take up a lot of memory and takes a long time to run.
 
