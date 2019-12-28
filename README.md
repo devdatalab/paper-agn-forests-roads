@@ -22,7 +22,7 @@ To regenerate the tables and figures from the paper, take the
 following steps:
 
 1. Download and unzip the replication data package from [this
-   link](https://www.dropbox.com/s/7yovx9usx2xoiry/agn-roads-forests-data.zip?dl=0).
+   link](https://www.dropbox.com/s/ffc5tbg0s3z72y1/agn-roads-forests-data.zip?dl=0).
 
 2. Clone this repo and switch to the code folder.
 

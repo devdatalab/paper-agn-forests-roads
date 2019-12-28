@@ -1,10 +1,10 @@
 clear all
 
 /* all of the following paths must be set */
-global out ~/tmp/deforest/out
-global tmp ~/tmp/deforest
+global out /scratch/pn/def/out
+global tmp /scratch/pn/def
 
-if mi("$out") | mi("$tmp") {
+if mi("$out") | mi("$tmp") | ("$tmp" == "/scratch/pn/def") {
   display as error "Globals 'out' and 'tmp' must be set for this to run."
   error 1
 }
@@ -37,7 +37,7 @@ do table_gq.do
 do table_gq_mech_subd.do
 
 /* Figure 5 -- highways */
-// do figure_group_plots_village.do
+do figure_group_plots_village.do
 
 /* figure 4 */
 do graph_end_base.do
