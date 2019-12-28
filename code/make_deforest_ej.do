@@ -3,8 +3,8 @@ clear all
 /* set the following globals:
 $out: path for output files to be created
 $tmp: path to data [intermediate data files will be put here too] */
-global out ~/tmp/deforest/out
-global tmp ~/tmp/deforest
+global out /scratch/pn/def/out
+global tmp /scratch/pn/def
 
 if mi("$out") | mi("$tmp") | ("$tmp" == "/scratch/pn/def") {
   display as error "Globals 'out' and 'tmp' must be set for this to run."
