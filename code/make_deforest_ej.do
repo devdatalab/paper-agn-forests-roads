@@ -1,8 +1,10 @@
 clear all
 
-/* all of the following paths must be set */
-global out /scratch/pn/def/out
-global tmp /scratch/pn/def
+/* set the following globals:
+$out: path for output files to be created
+$tmp: path to data [intermediate data files will be put here too] */
+global out ~/tmp/deforest/out
+global tmp ~/tmp/deforest
 
 if mi("$out") | mi("$tmp") | ("$tmp" == "/scratch/pn/def") {
   display as error "Globals 'out' and 'tmp' must be set for this to run."
@@ -19,7 +21,6 @@ do include_deforest_pub.do
 do table_summary.do
 
 /* RURAL ROADS ANALYSIS */
-
 /* Figure 3, Table 3, Table 4, Figure A5, Table A6, Table A8 */
 do table_rural_panel.do
 
@@ -36,14 +37,13 @@ do table_gq.do
 /* Figure 6, Table A11, Table A12 */
 do table_gq_mech_subd.do
 
-/* Figure 5 -- highways */
+/* Figure 5 -- highways. This takes a long time to run. */
 do figure_group_plots_village.do
 
 /* figure 4 */
 do graph_end_base.do
 
-/* additional appendix plots and tables */
-
+/* ADDITIONAL APPENDICES */
 /* figure A1 */
 do figure_road_dates.do
 
