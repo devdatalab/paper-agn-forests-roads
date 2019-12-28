@@ -775,12 +775,14 @@ end
 /* placeholders for estimation commands that should be supplied by users */
 cap prog drop graphout
 prog def graphout
-qui di "..."
+  syntax anything, [pdf large]
+  graph export $out/`anything'.eps
 end
 
 cap prog drop gt
 prog def gt
-qui di "..."
+  syntax anything, [pdf large]
+  graph export $out/`anything'.eps
 end
 
 cap prog drop estmod_header
