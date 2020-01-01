@@ -53,5 +53,8 @@ with ssc install.
 - running
 
 This code was tested using Stata 14.0. Some of this code generates
-datasets which take up a lot of memory and takes a long time to run.
+datasets which take up a lot of memory and takes a long time to
+run. The code does not generate Figures 1 and A2, which are maps that
+were constructed manually in QGIS. The source data for the maps is the
+2011 village-level polygon file available from MLInfoMap.
 
