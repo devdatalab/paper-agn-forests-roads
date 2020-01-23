@@ -60,3 +60,4 @@ do table_gq_iv.do
 do table_gq_timing.do
 
 cap log close
+

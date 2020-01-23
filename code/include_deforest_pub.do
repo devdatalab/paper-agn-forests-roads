@@ -776,13 +776,13 @@ end
 cap prog drop graphout
 prog def graphout
   syntax anything, [pdf large]
-  graph export $out/`anything'.eps
+  graph export $out/`anything'.eps, replace
 end
 
 cap prog drop gt
 prog def gt
   syntax anything, [pdf large]
-  graph export $out/`anything'.eps
+  graph export $out/`anything'.eps, replace
 end
 
 cap prog drop estmod_header

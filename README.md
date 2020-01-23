@@ -52,9 +52,12 @@ with ssc install.
 - coefplot
 - running
 
-This code was tested using Stata 14.0. Some of this code generates
-datasets which take up a lot of memory and takes a long time to
-run. The code does not generate Figures 1 and A2, which are maps that
+This code was tested using Stata 14.0. Tables 5 and A9 may be
+difficult to generate from a personal computer. We generated them on a
+server with max memory of 429 GB. Run time to generate all results on
+our server was about 35 minutes.
+
+The code does not generate Figures 1 and A2, which are maps that
 were constructed manually in QGIS. The source data for the maps is the
 2011 village-level polygon file available from MLInfoMap.
 

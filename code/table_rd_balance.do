@@ -71,7 +71,7 @@ foreach v in $baseline_vars {
 }
 
 /* write sample size */
-count if year == 2000
+count if year == 2000 & rd_band_2_
 file write fh "\hline" _n
 file write fh "Number of Observations & `r(N)' \\" _n
 
