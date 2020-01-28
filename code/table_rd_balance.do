@@ -1,4 +1,4 @@
-global balance_start \begin{tabular}{l r r}\hline\hline Variable & RD Estimate \\ \hline
+global balance_start \begin{tabular}{l r r r}\hline\hline Variable & RD Estimate  & N \\ \hline
 global balance_end "\hline\hline \multicolumn{2}{p{24em}}{\$^{*}p<0.10, ^{**}p<0.05,^{***}p<0.01\$} \\ \end{tabular} "
 global sum_stat_vars 
 
@@ -42,13 +42,14 @@ foreach v in $baseline_vars {
   local mean = "`format' (`r(mean)')"
   
   count if !mi(`v') & year == 2000
-  local N `r(N)'
 
   /* run core RD spec on this baseline value [skip running variable pc population] */
   reghdfe `v' t left right  if rd_band_2_ & year == 2000, absorb(dist_high_fe)
   local rd_beta = _b["t"]
   local rd_se = _se["t"]
   local t = _b["t"] / _se["t"]
+  count if e(sample)
+  local N `r(N)'
   
   qui test t = 0
   local p = `r(p)'
@@ -62,18 +63,11 @@ foreach v in $baseline_vars {
   local varlabel: var label `v'
 
   /* write varname, sample mean, RD estimate */
-  file write fh "`varlabel' & " %5.3f (`rd_beta') " \\ " _n
+  file write fh "`varlabel' & " %5.3f (`rd_beta') " & " %1.0f (`N')  " \\ " _n
 
   /* write RD standard error in parentheses */
-  file write fh " & (" %5.3f (`rd_se') ") \\" _n
-  
-  di %55s "\\,`varlabel': " `mean' `N' `format' (`rd_beta') `format' (`rd_se') %5.2f (`t')
+  file write fh " & (" %5.3f (`rd_se') ") & \\" _n
 }
-
-/* write sample size */
-count if year == 2000 & rd_band_2_
-file write fh "\hline" _n
-file write fh "Number of Observations & `r(N)' \\" _n
 
 /* write table footer to file */
 file write fh "$balance_end" _n
