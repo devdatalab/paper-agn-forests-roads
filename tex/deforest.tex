@@ -1,0 +1,98 @@
+\documentclass[12pt,letterpaper]{article}
+
+\input{include.tex}
+
+% set source path for external files
+\newcommand{\filepath}{.}
+
+% include standard package
+\input{front_matter}
+
+\title{The Ecological Impact of Transportation
+  Infrastructure\thanks{We are grateful for feedback on earlier
+    versions of this paper from Prashant Bharadwaj, Jenn Burney, Jonah Busch, Eric
+    Edmonds, Paul
+    Ferraro, Gordon Hanson, Maulik Jagnani, Erzo Luttmer, Erin Mansur,
+    Gordon McCord, and
+    seminar participants at UC San Diego, UC Irvine, San Diego State University, Claremont McKenna College, George Washington University, the 2018 Pacific Development Economics Conference, the 2018 Annual Meetings of the Agricultural and Applied Economics Association and the 2017 CU Boulder Environmental and Energy
+    Economics Workshop. Ryu Matsuura provided excellent research assistance. Garg acknowledges funding from the Center for Global Transformation at UCSD, ESRCCentre for Climate Change Economics and Policy, the Grantham Foundation for the Protection of the Environment. }}
+
+\author{Sam Asher\thanks{World Bank,
+    sasher@worldbank.org} \\ \\
+  Teevrat Garg\thanks{UC San Diego, teevrat@ucsd.edu} \\ \\ 
+  Paul Novosad\thanks{Dartmouth College, paul.novosad@dartmouth.edu}
+  \\ \\ }
+
+
+%%%%%%%%%%%%%%%%%%%%%% 
+% TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%% 
+\begin{document}
+\date{March 2019}
+\maketitle
+\thispagestyle{empty}
+
+% JEL CODES L91 O18 Q56
+\begin{abstract}
+
+\input{deforest_abstract_ej}
+
+\end{abstract}
+
+\newpage
+\clearpage
+\setcounter{page}{1}
+\doublespacing
+
+\section{Introduction}
+\label{sec:intro}
+\input{deforest_intro}
+
+\section{Background: Road Construction Programs in India}
+\label{sec:bg}
+\input{deforest_background}
+
+\section{Data}
+\label{sec:data}
+\input{deforest_data}
+
+\section{Impacts of Rural Feeder Roads on Forest Cover}
+\label{sec:rural}
+\input{deforest_rural}
+
+\section{Impacts of Major Highways on Forest Cover}
+\label{sec:highway}
+\input{deforest_highway}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{deforest_conclusion}
+
+\begin{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Make bibliography  %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\singlespace
+\bibliographystyle{aea}
+\bibliography{bibliography}
+
+\input{deforest_tables}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN APPENDIX TABLES AND FIGURES %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Online Appendix} 
+
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A\arabic{figure}}
+
+\input{deforest_app_tables}
+
+\end{appendix}
+
+\end{document}

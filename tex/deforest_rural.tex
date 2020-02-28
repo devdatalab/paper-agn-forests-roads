@@ -1,0 +1,316 @@
+This section describes the impact of new feeder roads on local
+deforestation. The main challenge to causal identification of the
+impacts of rural roads is endogeneity.  Because roads are costly to
+build, their placement is typically correlated with other factors that
+could also be predictors of deforestation. For example, roads could be
+targeted to places that are expected to grow or to places that are
+lagging economically. Road placement may also depend on geographic
+(e.g. slope, terrain, soil quality) or political factors.  Any of
+these scenarios would bias OLS estimates of the effect of new roads on
+deforestation.\footnote{Appendix Table~\ref{tab:ols} shows estimates
+  from cross-sectional OLS regressions of village-level log forest
+  cover in 2001 on an indicator variable that takes the value one if a
+  village has a paved road in 2001. While the bivariate relationship
+  is strongly negative and highly statistically significant, the
+  estimate gets progressively closer to zero as we add village-level
+  controls and fixed effects, implying substantial selection on
+  observables in the presence of roads. Selection on unobservables is
+  plausibly also important, making the OLS estimates unreliable for
+  causal inference.}  Causal identification of the impact of new roads
+therefore relies on some kind of variation in road placement or timing
+that is plausibly exogenous. To study the impact of rural roads, we
+rely on (i) an implementation rule that led to a discontinuity in the
+probability of a village getting a new road based on arbitrary
+population cutoffs; and (ii) variation in the specific year that a
+targeted village was treated. We focus our analysis on forest cover in
+the vicinity of connected villages. Because newly connected rural
+villages are mostly small and isolated, and because most of the new
+roads terminate in villages rather than providing new long distance
+corridors, these roads are unlikely to have had important general
+equilibrium effects on more distant areas.
+
+\subsection{Rural Roads: Regression Discontinuity Specification}
+
+We begin by exploiting the eligibility rule that prioritized villages
+for new roads based on arbitrary population thresholds. Given the
+imperfect compliance with these eligibility rules (described in
+Section~\ref{sec:bg}), we employ a fuzzy regression discontinuity (RD)
+design. 
+We limit the RD analysis to
+states in which administrators adhered closely to
+population threshold rules.\footnote{We identified these states with
+  the help of officials at NRRDA. They include Chhattisgarh, Gujarat,
+  Madhya Pradesh, Maharashtra, Orissa and Rajasthan. The
+  difference-in-differences analysis below uses all states that built
+  any roads in the sample period.} 
+
+We use an optimal bandwidth local linear regression discontinuity
+specification \cite{IL08,IK12,GI14} to identify the change in forest
+cover caused by a new road at the treatment threshold. We use the
+following two stage least squares specification:
+\begin{align} 
+\label{eq:rd1} 
+\nonumber Treatment_{vds} &= \gamma_0 + \gamma_1\cdot \mathbbm{1} (pop_{vds} \ge T_s) + \gamma_2 (pop_{vds} - T_s)
+               + \gamma_3 (pop_{vds} - T_s)\cdot \mathbbm{1} (pop_{vds}
+               \ge T_s) \\  &+ \nu_d + \boldsymbol \theta \boldsymbol{X}_{vds}
+               + \epsilon_{vds} 
+\\
+\nonumber Forest_{vds} &= \beta_0 + \beta_1\cdot Treatment_{vds} + \beta_2 (pop_{vds} - T_s)
+             + \beta_3 (pop_{vds} - T_s)\cdot \mathbbm{1} (pop_{vds} \ge T_s) 
+\\  &+ \mu_d + \boldsymbol \kappa \boldsymbol{X}_{vds} + \eta_{vds}
+\end{align} 
+\noindent 
+$Forest_{vds}$ is forest cover in village $v$, district $d$ and state
+$s$, and $Treatment_{vds}$ is an indicator equal to one if a new road
+was built in village $v$. $pop_{vds}$ is the population of village $v$
+and $T_s$ is the treatment threshold used in state $s$.\footnote{The
+  treatment threshold varies with state because some states used a
+  threshold of 500 and others were using a threshold of 1000. States
+  used the lower treatment threshold when they had few villages with
+  population over 1000 that did not already have roads. Officials at
+  the National Rural Roads Development Agency provided us with
+  information on which states were using which cutoffs, which we then
+  verified in the data. Madhya Pradesh used both the 500 and 1000
+  treatment thresholds for roads built in the same period; we include
+  separate fixed effects for the set of villages in the neighborhood
+  of each threshold. Because the optimal regression discontinuity
+  bandwidth is close to 100, there is no overlapping between these two
+  groups. Few villages around the lowest population threshold of 250
+  received roads so we do not use this threshold for analysis.}
+$\mu_d$ and $\nu_d$ are district fixed effects; we find virtually
+identical results with fixed effects at higher or lower geographic
+scales. $\boldsymbol{X}_{vds}$ is a control for baseline forest cover;
+like the fixed effects, the control is unnecessary for identification
+but improves precision. This is a cross-sectional regression where
+$\beta_1$ identifies the effect of new roads on forest cover in a
+given year. Outcomes are measured in the final year in the sample
+data, which is 2013.\footnote{We find similar results if we pool
+  outcome years from 2010 through 2013 and cluster standard errors at
+  the village level (not shown). Standard errors are slightly smaller
+  with this alternative approach, at the cost of putting more weight
+  on roads which have been built for shorter periods of time.}
+
+Appendix Figure~\ref{fig:rd_balance} shows regression discontinuity
+balance tests for a set of variables measured in the baseline period;
+Appendix Table~\ref{tab:rd_balance} presents the regression estimates on these
+tests using Equation~\ref{eq:rd1}. None of the regression
+discontinuity estimates are significantly different from zero at
+baseline. Appendix Figure~\ref{fig:rd_mccrary} shows that the density
+of the running variable is continuous around the treatment threshold
+\cite{MC08}.
+
+\subsection{Rural Roads: Regression Discontinuity Results}
+
+Figure~\ref{fig:rd} shows a graphical representation of the regression
+discontinuity estimates of the impact of rural roads on forest
+cover. Panel A shows the first stage; the Y axis shows the share of
+sample villages that received new roads by 2013 under PMGSY as a
+function of their population relative to the treatment
+threshold. Villages above the threshold are about 16 percentage points more likely to
+receive new roads and the discontinuity is evident. Panel B shows the
+first stage estimate separately for each outcome year; each point in
+the figure represents the $\gamma_1$ coefficient from
+Equation~\ref{eq:rd1}, where the dependent variable takes the value
+one if a village received a new road by the year indicated on the X
+axis. We can see that roads built before 2007 were not prioritized
+according to the population threshold rule; the first stage of the RD
+becomes noticeable after 2008 and continues to rise until 2014.
+
+Panel C of Figure~\ref{fig:rd} plots village-level log forest cover in
+2013 against the population relative to the treatment threshold, in
+population bins. If roads significantly affected local forest cover,
+we would expect to see a discontinuity at the treatment threshold
+analogous to that in Panel A; no such treatment effect is
+evident. Panel D shows the reduced form treatment effect of
+above-threshold population on forest cover ($\beta_1$) in each year
+separately; as in Panel B, each point is an estimate from a separate
+regression, where the dependent variable is the log of forest cover
+for the year on the X axis. If the new rural roads significantly
+affected forest cover, we would expect to see a change in the
+coefficient following 2008 when administrators began to adhere to the
+population implementation rule. Instead, the effect is very close to
+zero both before and after 2008, indicating that new rural roads had
+negligible effects on forest cover.
+
+Table~\ref{tab:rd} shows analogous regression estimates, where the
+dependent variable is forest cover as measured in 2013.  Column 1
+shows the first stage estimate of a 16 percentage point increase in
+the probability of road treatment for villages just above the
+eligibility threshold. Columns 2 and 3 confirm there is no reduced
+form effect on either log or average forest cover. Columns 4 through 6
+test for treatment effects in villages that might be expected to
+respond more to new roads. These are: villages with above-median
+baseline forest cover (Column 4); villages with above-median
+population shares of constitutionally described ``backward"
+communities (Scheduled Tribes) who often derive livelihoods from
+forests (Column 5); and villages with below median assets, who might
+depend more on forests for fuelwood (Column 6). There is no evidence
+of impacts of roads in any of these groups.\footnote{Appendix
+  Table~\ref{tab:rd_het} shows further that roads do not significantly
+  affect forest cover in villages defined by high or low town
+  distance, market access, nor in villages in subdistricts with above
+  median employment in the logging sector or in industries that are
+  heavy consumers of wood.}  Columns 7 and 8 show IV estimates on log
+and average forest cover. The IV estimates respectively rule out a
+0.14 gain and a 0.11 loss in log forest cover with 95\% confidence, or
+approximately a one percentage point change in average forest
+cover. The average treated village in the sample received a new road
+in 2008, so these estimates reflect cumulative forest change five
+years after a village is connected.  Results are robust to different
+controls or fixed effects and different bandwidth
+choices.\footnote{Results at many different bandwidths are shown in
+  Appendix Table~\ref{tab:rd_band}.} Appendix Table~\ref{tab:rd_fuel}
+uses the RD specification to show further that there are no changes in
+household fuel use following completion of a new road.
+
+\subsection{Rural Roads: Difference-in-Differences Specification}
+
+The regression discontinuity design estimates causal impacts of roads
+under minimal assumptions, but is limited to estimating a LATE in the
+neighborhood of the treatment threshold in states that closely
+followed implementation rules on population thresholds. We can make
+greater use of our data and obtain tighter treatment estimates using a
+difference-in-differences specification that exploits the differential
+timing of road treatment in each village. For this empirical test, we
+limit the sample of villages to those that received a road at
+\textit{some} point during the road construction program, and use
+outcomes in later-treated villages as a control group for villages
+that were treated earlier.  We specifically estimate the following
+equation:
+%
+\begin{align} 
+\label{eq:rr1} 
+Forest_{vdt} = \beta_1 \cdot Award_{vdt} +  \beta_2\cdot
+Complete_{vdt} + \boldsymbol \alpha_v + \boldsymbol \gamma_{dt} + \boldsymbol
+X_v \cdot \boldsymbol \nu_{t} + \eta_{vdt} 
+\end{align}
+%
+\noindent
+$Forest_{vdt}$ is a measure of forest cover in village $v$ and
+district $d$ in year $t$. $Award_{vdt}$ is an indicator that takes the
+value one for the years where a contract has been awarded for the
+construction of a road to village $v$ but the road construction is not
+yet complete. $Complete_{vdt}$ is an indicator that takes the value
+one for all years following the completion of a new road to village
+$v$. We separate these two periods because the road construction
+process may have effects on forest cover (such as clearing of forested
+area to make room for the physical placement of roads) that are
+theoretically distinct from the economic effects of a village having a
+new road. Village fixed effects ($\boldsymbol \alpha_v$) control for
+all village-level time-invariant unobservables, while district-year
+fixed effects ($\boldsymbol \gamma_{dt}$) control for any pattern of
+regional shocks.\footnote{Results are unchanged by replacing these
+  with state-year or subdistrict-year fixed effects.}  We also
+interact a vector of baseline village controls $\boldsymbol X_v$
+(baseline forest cover, village population and distance from the
+village to the nearest towns) with year fixed effects. These control
+for any differential time path of forest cover that is correlated with
+baseline village characteristics. These controls are particularly
+important because larger villages are more likely to be treated
+earlier due to program implementation rules.  Standard errors are
+clustered at the village level to account for serial correlation.
+
+We can interpret $\beta_1$ and $\beta_2$ as the effects of road
+construction activities and the effects of new roads, respectively;
+both coefficients describe outcomes relative to the period before any
+construction began. We restrict our sample from the universe of
+villages in India to those that had no road in 2000 and had a road
+completed during the study period. We do this so as not to compare
+villages that received new roads with those that did not; the
+endogeneity problem in such a comparison is severe.\footnote{As we
+  show above, a minority of roads were allocated strictly due to the
+  village population thresholds. There are enough of these to estimate
+  a regression discontinuity test on local compliers, but not enough
+  to assume that all treated villages are selected as good as
+  randomly.}  Identification rests on the assumption that, among the
+set of villages that received roads in the sample period, there are no
+other systematic changes specific to villages in the years that roads
+were awarded and completed that are not caused by the roads
+themselves.
+
+\subsection{Rural Roads: Difference-in-Differences Results }
+\label{sec:panel}
+
+The difference-in-difference estimates of the impact of rural roads on
+village-level forest cover are summarized by Figure~\ref{fig:panel}.
+These graphs show the residual of log forest cover --- after taking out
+fixed effects and controls described above --- as a function of the
+number of years elapsed since a road was completed in a given
+village. Panel A shows all previously-unconnected villages that
+received new roads between 2001 and 2014.  Panel B restricts the set
+of villages to those with above median forest cover in 2000.  We show
+only four years before and after road construction because wider
+windows have more variable sample composition across estimates; this
+occurs because we observe different length of pre- and post-periods
+for different villages depending on their date of
+treatment.\footnote{Appendix Figure~\ref{fig:panel_4} shows a wider
+  time window around treatment; the pattern is the same.} Two patterns
+are evident in the figure.  First, there is a statistically
+significant reduction in forest cover approximately two years before
+road construction is complete. Second, forest cover marginally
+increases in the four years after road completion recovering some or
+all of the pre-treatment drop.
+
+Given that these rural roads took one to two years to build, this
+pattern is consistent with a small degree of forest loss
+(approximately 0.5\%) during the road construction period, with
+partial or complete recovery afterward. We test this directly in
+Table~\ref{tab:panel}, which shows estimates from
+Equation~\ref{eq:rr1}. Our main estimate in Column 1 shows that
+villages lose 0.5\% of their forest cover during the period between
+the awarding of a road construction contract and the completion of a
+road. However, that forest loss is fully restored in the period after
+the road has been completed; the estimate of 0.002 log points on the
+completion indicator can be interpreted as the difference in forest
+cover between the post-road and the pre-award periods. Relative to the
+pre-award period, we can rule out gains larger than 0.6\% and declines
+larger than 0.2\% in forest cover. In Column 2, we show that failing
+to account for the award period would lead to the estimation of a
+marginal forest cover gain of 0.5\% because it would incorrectly
+attribute the construction period loss to the pretrend. This result
+highlights the importance of accounting for the construction period
+when studying the environmental impacts of new infrastructure. Columns
+3 and 4 present estimates where forest cover is measured as the
+average share of each pixel that is covered by forest; results are
+similar.  These estimates are based on different lengths of
+post-construction periods in different villages, but on average they
+show effects for four years after treatment.\footnote{Appendix
+  Table~\ref{tab:panel_robust} shows that these estimates are robust
+  to a range of specifications including the use of village time
+  trends, subdistrict-year fixed effects (instead of district-year
+  fixed effects) and using a limited sample of roads for which we have
+  at least 4 (or 5) years of both pre-treatment and post-treatment
+  data. Appendix Table~\ref{tab:mis_ests} shows additional
+  specifications. Column 1 adds villages that did not receive roads in
+  the sample period, the specification used in \citeasnoun{K17}. Like
+  \citeasnoun{K17}, we find a positive treatment coefficient; however,
+  Column 2 shows that this is not robust to the inclusion of
+  village-specific time trends, indicating that never-treated villages
+  are on different forest cover trends from treated villages. Columns 3
+  and 4 show that our main estimate is robust to village-specific time
+  trends. Column 5 and 6 define the treated area as a circle around
+  the village with a radius of 5km and 50km, respectively; as in the main
+  specification, we find no treatment effects at these radii.}
+
+Table~\ref{tab:panel_het} shows these estimates along the same
+dimensions of heterogeneity described above. Effects are broadly
+similar whether we cut the sample on baseline forest cover, population
+share of Scheduled Tribes, or asset poverty. There is thus no evidence
+that our zero results are hiding differential positive and negative
+effects in different places.\footnote{Equally, we find no effects of
+  roads on forest cover when splitting the sample on distance to the
+  nearest town or on market access, nor in subdistricts with above
+  median employment in logging or in industries with high consumption
+  of wood (Appendix Table~\ref{tab:panel_het_app}).} It is also
+unlikely that outmigration of individuals following road construction
+is significantly biasing our findings; these rural roads are not
+associated with significant population change at the village level
+\cite{AN17}. Rural-to-urban migration has also been much slower in
+India over the sample period than in other countries at comparable
+levels of income.
+
+The panel estimates confirm the finding in the regression
+discontinuity analysis, using a different set of villages with a
+different local average treatment effect; the evidence is clear that
+new rural roads have had a negligible effect on local forest cover.
+

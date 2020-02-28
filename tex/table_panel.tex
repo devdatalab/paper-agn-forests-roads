@@ -1,0 +1,21 @@
+\setlength{\linewidth}{.1cm} \begin{center}
+\newcommand{\contents}{\begin{tabular}{l*{4}{c}}
+\hline\hline
+ & \multicolumn{2}{c}{\underline{Log Forest}} & \multicolumn{2}{c}{\underline{Average Forest}} \\ 
+%PYTHON_HEADER
+                    &         (1)   &         (2)   &         (3)   &         (4)   \\
+\hline
+Award Period        &      -0.005***&               &      -0.033***&               \\
+                    &     (0.002)   &               &     (0.013)   &               \\
+Completion Period   &       0.002   &       0.005***&       0.009   &       0.013   \\
+                    &     (0.002)   &     (0.002)   &     (0.015)   &     (0.012)   \\
+\hline District-Year F.E.           & Yes & Yes & Yes & Yes \\
+       Village F.E.        & Yes & Yes & Yes & Yes \\ \hline 
+N                   &      688275   &      688275   &      688275   &      688275   \\
+r2                  &        0.94   &        0.94   &        0.92   &        0.92   \\
+\hline
+\multicolumn{5}{p{\linewidth}}{$^{*}p<0.10, ^{**}p<0.05, ^{***}p<0.01$} \\
+\multicolumn{5}{p{\linewidth}}{\footnotesize \tablenote}
+\end{tabular} }
+\setbox0=\hbox{\contents}
+\setlength{\linewidth}{\wd0-2\tabcolsep-.25em} \contents \end{center}

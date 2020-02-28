@@ -1,0 +1,20 @@
+\setlength{\linewidth}{.1cm} \begin{center}
+\newcommand{\contents}{\begin{tabular}{l*{6}{c}}
+\hline\hline
+ & \multicolumn{2}{c}{\underline{Baseline Forest}} & \multicolumn{2}{c}{\underline{ST Share}} & \multicolumn{2}{c}{\underline{Asset Poverty}}  \\ 
+%PYTHON_HEADER
+                    &        High   &         Low   &        High   &         Low   &        Poor   &    Not Poor   \\
+\hline
+Award Period        &      -0.005*  &      -0.005***&      -0.003   &      -0.006***&      -0.004   &      -0.006***\\
+                    &     (0.003)   &     (0.002)   &     (0.003)   &     (0.002)   &     (0.003)   &     (0.002)   \\
+Completion Period   &      -0.002   &       0.002   &       0.000   &       0.003   &       0.001   &       0.001   \\
+                    &     (0.004)   &     (0.002)   &     (0.003)   &     (0.003)   &     (0.004)   &     (0.003)   \\
+\hline
+N                   &      341280   &      346455   &      344010   &      343860   &      265470   &      422430   \\
+r2                  &        0.86   &        0.92   &        0.93   &        0.95   &        0.94   &        0.95   \\
+\hline
+\multicolumn{7}{p{\linewidth}}{$^{*}p<0.10, ^{**}p<0.05, ^{***}p<0.01$} \\
+\multicolumn{7}{p{\linewidth}}{\footnotesize \tablenote}
+\end{tabular} }
+\setbox0=\hbox{\contents}
+\setlength{\linewidth}{\wd0-2\tabcolsep-.25em} \contents \end{center}

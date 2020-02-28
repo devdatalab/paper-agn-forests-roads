@@ -1,0 +1,40 @@
+\setlength{\linewidth}{.1cm} \begin{center}
+\newcommand{\contents}{\begin{tabular}{l*{4}{c}}
+\hline\hline
+ & \multicolumn{2}{c}{\underline{GQ (Straight Line)}} & \multicolumn{2}{c}{\underline{NSEW (Straight Line)}} \\ 
+%PYTHON_HEADER
+                    &  Log Forest   &  Avg Forest   &  Log Forest   &Average Forest   \\
+\hline
+GQ Construction Period * (0-50km)&      -0.144***&      -0.442***&      -0.013   &       0.379   \\
+                    &     (0.026)   &     (0.142)   &     (0.055)   &     (0.314)   \\
+GQ Construction Period * (50-100km)&      -0.181***&      -0.749***&      -0.010   &       0.199   \\
+                    &     (0.027)   &     (0.142)   &     (0.052)   &     (0.297)   \\
+GQ Construction Period * (100-150km)&      -0.129***&      -0.495***&       0.014   &      -0.336   \\
+                    &     (0.029)   &     (0.164)   &     (0.048)   &     (0.272)   \\
+GQ Construction Period * (150-200km)&      -0.086***&      -0.362** &      -0.030   &      -0.157   \\
+                    &     (0.031)   &     (0.178)   &     (0.044)   &     (0.268)   \\
+GQ Post Period * (0-50km)&      -0.113***&      -0.422***&      -0.015   &       0.528   \\
+                    &     (0.026)   &     (0.133)   &     (0.053)   &     (0.332)   \\
+GQ Post Period * (50-100km)&      -0.110***&      -0.518***&      -0.061   &      -0.051   \\
+                    &     (0.027)   &     (0.137)   &     (0.054)   &     (0.329)   \\
+GQ Post Period * (100-150km)&      -0.057** &      -0.138   &      -0.027   &      -0.374   \\
+                    &     (0.028)   &     (0.154)   &     (0.051)   &     (0.316)   \\
+GQ Post Period * (150-200km)&      -0.050*  &      -0.186   &      -0.051   &      -0.361   \\
+                    &     (0.029)   &     (0.162)   &     (0.042)   &     (0.320)   \\
+Distance 0-50km     &       0.019***&       0.179***&      -0.056***&      -0.166   \\
+                    &     (0.007)   &     (0.051)   &     (0.017)   &     (0.801)   \\
+Distance 50-100km   &       0.033***&       0.282***&      -0.057***&       1.903** \\
+                    &     (0.008)   &     (0.055)   &     (0.016)   &     (0.886)   \\
+Distance 100-150km  &       0.033***&       0.273***&      -0.045***&       0.480   \\
+                    &     (0.007)   &     (0.051)   &     (0.016)   &     (0.819)   \\
+Distance 150-200km  &       0.024***&       0.195***&      -0.019*  &      -0.342   \\
+                    &     (0.005)   &     (0.039)   &     (0.011)   &     (0.866)   \\
+\hline
+N                   &       26397   &       26397   &       14958   &       14958   \\
+r2                  &        0.90   &        0.90   &        0.94   &        0.86   \\
+\hline
+\multicolumn{5}{p{\linewidth}}{$^{*}p<0.10, ^{**}p<0.05, ^{***}p<0.01$} \\
+\multicolumn{5}{p{\linewidth}}{\footnotesize \tablenote}
+\end{tabular} }
+\setbox0=\hbox{\contents}
+\setlength{\linewidth}{\wd0-2\tabcolsep-.25em} \contents \end{center}

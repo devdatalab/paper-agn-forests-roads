@@ -1,0 +1,357 @@
+In this section, we aim to identify the causal impact of highways on
+local forest cover. The identification challenge is that highways are
+typically built to connect cities with current or anticipated economic
+growth; if economic growth is correlated with forest cover changes for
+any reason other than the direct effect of highways, then we cannot
+interpret the correlation between highways and forests as a causal
+effect.
+
+We therefore focus on a set of places that happen to be in between the
+targeted endpoints of India's new highways, as in \citeasnoun{GGK16}.
+Both the Golden Quadrilateral (GQ) and the North-South and East-West
+(NS-EW) corridors were upgraded with the objective of improving
+connections between India's major cities and regions; the connection
+of secondary cities and intermediate places on the route was a
+secondary priority. Because these intermediate regions were targeted
+incidentally rather than directly, the placement of the highways is
+less likely to be driven by existing or anticipated economic growth.
+
+We can further generate a plausible counterfactual that describes how
+forest cover would have changed in the absence of the highway
+upgrades. Like the GQ, the NS-EW route was an important transportation
+corridor in 2000 and was to be upgraded before 2005 as part of NHDP, but
+the project did not begin in earnest until several years after the GQ
+was completed.  Our main estimates examine forest changes along the GQ
+corridor during and after the construction years, as compared to
+regions further from the GQ. We then test for effects along the NS-EW
+route using a similar specification, showing there are no effects
+along the second corridor until after 2008, as would be expected given
+the construction delay.
+
+As a starting point, Figure~\ref{fig:gq_means} plots kernel-smoothed
+local regression estimates of mean forest cover and forest cover
+change as a function of distance from each highway. Initial forest
+cover (Panel A) is broadly similar across the two highways. Panel B
+shows forest cover change from 2000-2008, also by distance to each
+highway. Relative to the NS-EW (dashed line), forest cover within 100
+km of the GQ (solid line) falls substantially between 2000 and
+2008. At further distances the effects are similar across the two
+highways, though there may be smaller relative gains for the GQ. We
+present this as suggestive evidence of relative forest loss along the
+GQ corridor during and after its construction. The rest of this
+section generates formal tests for change, controlling for fixed
+effects and other factors that may have simultaneously influenced
+forest change.
+
+\subsection{Highways: Empirical Specification}
+\label{sec:highway_spec}
+
+The simplest form of the difference-in-differences specification is
+described by the following equation:
+%
+\begin{align} 
+\label{eq:gq_simple} 
+Forest_{ist} = \beta_0 + \beta_1 CLOSE_{is} + \beta_2 POST_{t}
++ \beta_3 CLOSE_{is} * POST_{t} + \epsilon_{ist}
+\end{align}
+%
+In this specification, $i$ indexes a subdistrict in state $s$ and time
+$t$, $CLOSE_{is}$ is an indicator for subdistricts close to the
+highway, and $POST$ indicates years following the completion of the
+highway. $Forest_{ist}$ is a measure of forest cover in subdistrict
+$i$ and state $s$ at time $t$, usually log total forest cover. $\beta_3$
+describes the differential change in forest between locations that are
+near and far from the highway network after the highway is built,
+controlling for the same geographic difference before the highway was
+built. If new highways cause deforestation, we expect $\beta_3$ to be
+less than zero. We conduct our analysis at the subdistrict level,
+because subdistricts are contiguous regions that cover the whole of
+India for which we can calculate a range of demographic and
+socioeconomic controls. We weight results by subdistrict
+area.\footnote{Results from a town- and village-level analysis with
+  subdistrict clusters deliver nearly identical results. We could in
+  principle conduct analysis at the grid cell level, but this would
+  require imputation for control variables not available at the grid
+  cell level.} There are approximately 4000 subdistricts in India.
+
+We extend this simple specification in three ways. First, because we
+do not have strong priors on which distances are near and which are
+far, we use a flexible set of distance indicators to nonparametrically
+identify highway effects at a range of distances. Estimates can still
+be interpreted as the difference from a given band to the omitted
+(most remote) distance band. This ensures that our result is not
+dependent upon a particular definition of closeness. Second, because
+the construction of India's national highways were multiyear projects,
+we separate the $POST_t$ indicator into multiple periods to capture
+construction and post-construction effects. Third, we add a wide set
+of fixed effects and controls to improve precision and reduce bias
+from omitted variables. The most flexible estimating equation is:
+%
+\begin{align} 
+\label{eq:gq} 
+  Forest_{ist} = \sum_{d =
+  1}^D \sum_{t=2001}^{2014} \beta_{d,t} \mathbbm{1}
+  (DIST_i \in (d^-,d^+), YEAR=t) + 
+  \gamma_{st} + \boldsymbol X_i \cdot \boldsymbol \nu_{t} +
+  \psi_d + \eta_{ist} \end{align}
+
+\noindent The distance to the highway is divided into $D$ bands, the boundaries
+of which are indexed by $d$. 
+We include a distance band
+fixed effect $\psi_d$, state-year fixed
+effect $\gamma_{st}$ and a vector of subdistrict controls
+($\boldsymbol X_i$) interacted with year fixed effects ($\boldsymbol
+\nu_t$). The latter control for any differential time path of forest cover
+that is correlated with baseline subdistrict characteristics.  Controls are
+the same as in Equation~\ref{eq:rr1}. 
+We include
+locations up to a distance $D+E$ from the Golden Quadrilateral; the outer
+boundary $(D,E)$ is the omitted distance category against which the other
+estimates can be compared. Unless otherwise specified, we define $(D,E)$
+as the 200-300km distance band.\footnote{Alternate choices of the
+  range of the omitted group, including using the remainder of the
+  country does not appreciably affect our estimates.}  $\beta_{d,t}$
+identifies the change in forest cover from 2000 to year $t$, at
+distance range $d$ from the highway, relative to the omitted distance
+range $(D,E)$. The $\beta_{d,t}$ coefficients can thus be directly
+interpreted as the effect of highway construction on forest cover
+after $t$ years.  If new highways cause proximate forest cover loss,
+we expect $\beta_{d,t}$ to take on negative values for low values of
+$d$ in the periods $t$ after highway construction has begun. For
+graphs, we include a set of indicator variables $\beta_{d,2000}$ which
+describe baseline forest cover as a function of distance from the
+highway.\footnote{We do not include subdistrict fixed effects because
+  we want to generate coefficients on the distance band indicators for
+  the omitted year 2000 --- these coefficients describe the baseline
+  differences in forest cover between places that were near and far
+  from the highway. However, inclusion of subdistrict fixed effects
+  does not meaningfully change the results. We use state-year fixed
+  effects rather than district-year fixed effects because we wish to
+  test for meaningful effects of distance from highways that may
+  extend beyond the radius of districts. District-year fixed effects
+  would absorb true effects of the GQ that span distances larger than
+  districts. The analysis of Goswami Ghani and Kerr \cite{GGK16} is
+  entirely district level, giving us reason to expect meaningful
+  cross-district effects. As expected, the inclusion of district-year
+  fixed effects attenuates our results slightly but does not change
+  the direction of effects nor eliminate statistical significance.}
+Standard errors are clustered at the subdistrict level to account for
+serial correlation. Because the regression above may have hundreds of
+coefficients, we pool years or distances in different specifications
+to improve interpretability.
+
+We exclude areas within 200km of the nodal towns on the highway
+routes, as we wish to identify effects on intermediate regions rather
+than at the highway end points, as in Goswami Ghani and Kerr
+\cite{GGK16}. Estimates of NS-EW treatment effects omit areas that are
+within 200km of the GQ as they are plausibly being treated by the
+other highway network. We do not omit NS-EW regions from the GQ
+regressions because NS-EW construction has barely begun during the
+periods of interest for the GQ analysis; however, regression results
+are not changed by omitting places within 200km of NS-EW.
+
+\subsection{Highways: Estimates on Forest Cover}
+\label{sec:highway_results}
+
+Panel A of Figure~\ref{fig:gq_dist} plots coefficient estimates from a
+single estimation of Equation~\ref{eq:gq}, with distances from the
+GQ highway divided into 10km bands, and years divided into a
+single pre-construction year (2000), the construction period
+(2001-2004), and two post construction periods (2005-2008 and
+2009-2012). All estimates describe the difference between a given 10km
+distance band from the GQ and the omitted category of
+250-300km.\footnote{We include coefficients for the 200-250 km bands
+  in order to plot treatment effects at these ranges. Effects in
+  closer bands are very similar if we restrict the distance indicators
+  to 200km and use 200-300km as the omitted group, because there are
+  few differences across years in the 200-250km range.}  The solid
+black line describes baseline forest cover as a function of distance
+from the GQ corridor. The remaining lines show that forest cover
+within 100 km of the GQ declines rapidly during the GQ construction
+period and then continues to fall in the years following
+construction. Effects are slightly smaller in the 100-150km bandwidth,
+and statistically indistinguishable from zero at a distances greater than 150km from
+the highway.
+
+To alleviate the concern that these forest losses are explained by
+existing trends in forest loss along existing highway corridors, we
+run the same estimation for subdistricts along the NS-EW corridor and
+show results in Panel B. As predicted, there are no differential changes
+in forest cover close to the NS-EW route before 2008. Net forest
+loss along NS-EW begins in the 2009-2012 period, and the distance effects then
+look similar to those of the GQ.\footnote{Standard errors are omitted
+  in the figure for visual clarity. For the GQ, differences between
+  the 2000 estimates and the 2001-2004 estimates are statistically
+  significant at the 1\% level for all estimates up to 150km. For the
+  NS-EW, differences between the 2000 estimates and the 2009-2012
+  treatment estimates are statistically distinguishable at the 1\%
+  level until the 180km estimate.} This distance pattern of forest
+cover loss is similar to that found in the Amazon \cite{PR07}. 
+Effects along the NS-EW
+corridor may be slightly smaller than along the GQ both because construction
+took place slowly and was still incomplete at the end of the sample
+period in 2014; the network
+structure of highways mean that the value of any particular segment
+depends on the completion status of other segments. Concentration of
+industry along the GQ corridor may have also reduced the importance of
+NS-EW as an intercity transportation corridor by the time the NS-EW
+upgrades took place. 
+
+ Table~\ref{tab:gq} presents regression estimates from
+Equation~\ref{eq:gq}, with distances in 50km bands for legibility.
+Each estimate describes the difference in forest cover between a given
+distance band and the omitted category of 200-300km. Columns (1) and
+(2) describe the impact of the GQ on forest cover.  The top four rows
+of the table show estimates of construction period impacts on forest
+cover at various distance bands. Places within 50km of the new highway
+network lose 27 log points of forest cover (Column 1) or 1.3
+percentage points of forest cover (Column 2, on a base of 7.5\%), and
+the effects shrink at greater distances. The next four rows show
+similar effects (still relative to year 2000) in the post-construction
+period of 2005-2008. The final four rows show estimates of baseline
+differences between the GQ and the regions further away; the level
+differences are small relative to the treatment effects.
+
+Columns 3 and 4 of Table~\ref{tab:gq} show comparable estimates along
+the NS-EW corridor for the same time periods.  There are no detectable
+changes in forest cover close to the NS-EW in the time period when
+significant forest loss took place near the GQ. Along with
+Figure~\ref{fig:gq_dist}, this should alleviate any concern that the
+GQ treatment effects are driven by generalized deforestation along
+existing highway corridors from 2001-2008.  These results are robust
+to instrumenting for highway location using straight line instruments
+connecting the nodal cities of the highway network, as employed by
+\citeasnoun{GGK16}; we present analogous reduced form estimates to the
+above in Appendix Table~\ref{tab:gq_iv}. These estimates alleviate the
+concern that the particular routing of the GQ (but not the NS-EW) was
+specifically targeted to places that may have already been losing
+forest cover.
+
+An alternate estimation approach would be to exploit the timing of
+construction of each segment of the highway and to study forest cover
+in the years before and after the nearest segment to a given location
+was built. This would be analogous to the difference-in-differences
+estimation used to study the impact of rural roads in
+Section~\ref{sec:rural}. The results, which are consistent with the
+findings above, are presented in Appendix
+Table~\ref{tab:gq_timing}.\footnote{We did not use this as a primary
+  specification because there are substantial network effects in
+  highway construction. A region without an upgraded highway segment
+  may experience greater transportation access if the regions around
+  it experience upgrades. Equally, a nearby upgrade may not be of much
+  value if it is an isolated upgrade to a not-yet-upgraded part of the
+  corridor. We therefore would expect estimates from a specification
+  exploiting timing to underestimate the full impacts of the highway
+  construction, which is what we find in Appendix
+  Table~\ref{tab:gq_timing}.} One useful feature of this analysis is
+that it is directly analogous to our difference-in-differences
+estimates of the impacts of rural roads (Equation~\ref{eq:rr1} and
+Table~\ref{tab:panel}), making clear that the differential effects of
+highways and rural roads are not an artifact of the different
+empirical strategies used to evaluate them.
+
+A final concern with these estimates of forest change is that they
+could be describing displacement of forest loss from the hinterlands
+to the highway corridors, or even net afforestation in the
+hinterlands. This concern arises frequently in studies of
+transportation projects with national scale, and is typically only
+resolved by assumption through a structural modeling approach, which
+is beyond the scope of this paper.  This said, large displacement
+effects are made less plausible by the low quality of the broader road
+network, and by the high transportation costs during the sample
+period, weakening market connections with the hinterlands of these
+highways.  While we cannot entirely rule out that there may be some
+displacement effects, Panel B of Figure~\ref{fig:gq_means} suggests
+that effects are driven by the highway corridor regions rather than
+the hinterlands; forest cover diverges between the places close to the
+GQ and NS-EW, but not in those far away.
+
+\subsubsection{Mechanisms for Highway Effects}
+
+We consider four possible mechanisms for the forest cover loss caused
+by India's major highway networks: (i) increased demand for timber
+products by firms due to local growth; (ii) increased demand for
+firewood due to shifts in household fuel consumption; (iii) expansion
+of agriculture into previously forested lands; and (iv) clearing of
+trees for settlements and industry. This section presents
+suggestive evidence that the deforestation along India's major
+highways is predominantly caused by increased logging driven by local
+timber demand.
+
+To identify potential mechanisms, we use the regression specification
+used to identify effects of highways on forest cover
+(Equation~\ref{eq:gq}), with data from the economic and population
+censuses which were undertaken in various periods between 1990 and
+2013. Because the results above suggest forest cover changes within
+100km of the highway network, we use 100km distance bands and define
+200-300km as the omitted distance band.\footnote{We find virtually
+  identical results when we use 50km distance bins.} The years in the
+sample are determined by census availability.
+
+We first look at changes in employment in the list of industries that
+are directly downstream from timber harvesting (described in
+Section~\ref{sec:data}). Panel A of Figure~\ref{fig:gq_mech} shows
+results from a regression of log employment in major wood-consuming
+sectors on the usual set of year-distance-band fixed effects. We graph
+the point estimates on the 0-100km coefficient in each year that the
+Economic Census is available (\textit{i.e.} the coefficients
+$\beta_{0-100km,1990}$, $\beta_{0-100km,1998}$,
+$\beta_{0-100km,2005}$, and $\beta_{0-100km,2013}$ from
+Equation~\ref{eq:gq}). These estimates can be interpreted as the
+difference in residual log employment between the 0-100km distance
+band and the 200-300km distance band, after controlling for state-year
+fixed effects and the controls described above. In 1990 and 1998
+(before the GQ was begun), there is no significant difference between
+areas close to the highway corridor and areas that are far from it,
+nor is there a significant trend. By 2005, we see a 5\% increase in
+employment in wood-consuming firms in the GQ corridor relative to the
+hinterland, which continues to rise through 2013. Panel B shows
+similar results for employment in logging firms; we omit 2005 because
+logging firms were not distinguished from firms engaged in
+afforestation in the 2005 Economic Census.  These two graphs suggest
+that demand for wood from downstream firms is a plausible explanation
+for local deforestation after construction of the
+GQ.\footnote{Appendix Tables~\ref{tab:app_gq_mech_ec} and
+  \ref{tab:app_gq_mech_land_fuel} show complete regression results for
+  all mechanism tests. As would be expected, employment in logging
+  firms is more geographically diffuse, as those firms reach further
+  into the GQ's hinterland.} Logging firms were more common
+along the transport corridor even before the GQ was built, but there
+is no suggestion of a pretrend that could explain what we see after
+highway construction. Note that employment in other sectors of the
+economy, which also consume wood, exhibit similar treatment effects
+close to the new highways \cite{GGK16}.
+
+Panels C through E of Figure~\ref{fig:gq_mech} show the effects of the
+GQ upgrades on household fuel consumption, for which data are
+available in 2001 and 2011. We observe marginal increases in firewood
+and imported wood use, and comparable reductions in use of local
+non-wood fuels. These effects are not statistically significantly
+different from zero, nor are they large enough to explain a 20\%
+reduction in forest cover in the neighborhood of the GQ
+corridor. Panel F shows that land use shifts slightly \textit{away}
+from agricultural uses following the construction of the GQ, breaking
+a previous upward trend, making agricultural extensification an
+unlikely explanation for the treatment effects.
+
+It is difficult to directly test the last hypothesis that net forest
+loss has come from the expansion of land dedicated to settlement and
+industry, because data on land dedicated to settlement and industry
+only becomes available in the 2011 Population Census. However, it is
+implausible that settlement and industrial expansion could explain a
+20\% reduction in forest cover in a distance band as wide as 100km
+around a 6000km long highway corridor. In 2011, only 6.7\% of of rural
+land was used for settlement and industry.
+
+The large relative forest losses along the GQ corridor are unlikely to
+be direct effects of the road construction process. Although we found
+evidence of these effects in the construction of rural roads in
+Section~\ref{sec:rural}, these were very local, temporary, and an
+order of magnitude lower in size. It is also implausible that direct
+construction effects would extend more than a few kilometers from the
+roadway.
+
+In conclusion, we find evidence that expansion of industry
+demand for timber can explain forest loss in the GQ corridor, and we
+can rule out agricultural expansion, changes in household fuel
+consumption and settlement expansion as mechanisms.

@@ -1,0 +1,20 @@
+\setlength{\linewidth}{.1cm} \begin{center}
+\newcommand{\contents}{\begin{tabular}{l*{8}{c}}
+\hline\hline
+ & \underline{First Stage} & \multicolumn{5}{c}{\underline{Reduced Form}} & \multicolumn{2}{c}{\underline{IV}} \\ 
+%PYTHON_HEADER
+                    &    Any Road   &  Log Forest   &  Avg Forest   &High Baseline   &     High ST   &  Low Assets   &  Log Forest   &  Avg Forest   \\
+\hline
+Above Population Threshold&       0.185***&      -0.002   &      -0.007   &      -0.011   &      -0.008   &       0.007   &               &               \\
+                    &     (0.011)   &     (0.015)   &     (0.106)   &     (0.018)   &     (0.020)   &     (0.023)   &               &               \\
+New Road            &               &               &               &               &               &               &      -0.008   &      -0.373   \\
+                    &               &               &               &               &               &               &     (0.079)   &     (0.703)   \\
+\hline
+N                   &       22365   &       22365   &       22365   &       11214   &       11174   &        8875   &       22368   &       22368   \\
+r2                  &        0.25   &        0.81   &        0.62   &        0.72   &        0.83   &        0.80   &        0.81   &        0.42   \\
+\hline
+\multicolumn{9}{p{\linewidth}}{$^{*}p<0.10, ^{**}p<0.05, ^{***}p<0.01$} \\
+\multicolumn{9}{p{\linewidth}}{\footnotesize \tablenote}
+\end{tabular} }
+\setbox0=\hbox{\contents}
+\setlength{\linewidth}{\wd0-2\tabcolsep-.25em} \contents \end{center}
