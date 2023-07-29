@@ -4,7 +4,7 @@ These code and data files replicate the results in "The Ecological
 Impact of Transportation Infrastructure," by Sam Asher, Teevrat Garg,
 and Paul Novosad, forthcoming (as of Nov. 2019) in *The Economic
 Journal*.  A working paper version of the manuscript can be found
-[here](http://www.dartmouth.edu/~novosad/agn-roads-forests.pdf).
+[here](http://www.paulnovosad.com/pdf/agn-roads-forests.pdf).
 
 If you are seeking village-level data on India, including forest
 cover, we would recommend downloading data from the
@@ -27,12 +27,16 @@ following steps:
 
 2. Clone this repo and switch to the code folder.
 
-3. Open the do file make_deforest_ej.do, and set the globals "out" and
-   "tmp".  "out" is the target folder for all outputs, such as tables
-   and graphs. "tmp" is the folder for the data files and
+3. Open the do file make_deforest_ej.do, and set the globals `out` and
+   `tmp`.  `out` is the target folder for all outputs, such as tables
+   and graphs. `tmp` is the folder for the data files and
    temporary data files that will be created during the rebuild.
+   Make sure that `tmp` points to the folder where you have downloaded
+   the data packet above.
+   
+4. Use `ssc` to install the Stata packages below.
 
-4. Run the do file make_deforest_ej.do.  This will run through all the
+5. Run the do file make_deforest_ej.do.  This will run through all the
    other do files to regenerate all of the results.
 
 We have included all the required programs to generate the main
@@ -51,13 +55,27 @@ with ssc install.
 - ftools
 - coefplot
 - running
+- binscatter
 
 This code was tested using Stata 14.0. Tables 5 and A9 may be
 difficult to generate from a personal computer. We generated them on a
-server with max memory of 429 GB. Run time to generate all results on
-our server was about 35 minutes.
+server with max memory of 429 GB. The EJ replicators ran the analysis on a machine with 32 GB RAM, with peak memory consumption of 35 GB. Run time to generate all results on our server was about 35 minutes.
 
 The code does not generate Figures 1 and A2, which are maps that
 were constructed manually in QGIS. The source data for the maps is the
 2011 village-level polygon file available from MLInfoMap.
+
+## Data availability
+
+The primary data sources used for this paper are Vegetation Continuous Fields (Townshend et al. 2011), the Indian Population Census, and administrative data from the PMGSY (Asher and Novosad 2020). While all sources were public, their web sites have changed repeatedly since paper publication, and it is not realistic to actively maintain links.
+
+The data packets linked above can be used for replication. Almost all of the underlying data can be accessed via the [SHRUG dataset](http://devdatalab.org/shrug).
+
+### References:
+
+* Townshend, J., M. Hansen, M. Carroll, C. DiMiceli, R. Sohlberg, and C. Huang.
+2011. “User Guide for the MODIS Vegetation Continuous Fields product Collection 5
+version 1.”
+
+* Asher, Sam, and Paul Novosad. "Rural roads and local economic development." American economic review 110.3 (2020): 797-823.
 
