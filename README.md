@@ -73,9 +73,7 @@ The data packets linked above can be used for replication. Almost all of the und
 
 ### References:
 
-* Townshend, J., M. Hansen, M. Carroll, C. DiMiceli, R. Sohlberg, and C. Huang.
-2011. “User Guide for the MODIS Vegetation Continuous Fields product Collection 5
-version 1.”
+* Townshend, J., M. Hansen, M. Carroll, C. DiMiceli, R. Sohlberg, and C. Huang. 2011. “User Guide for the MODIS Vegetation Continuous Fields product Collection 5 version 1.”
 
 * Asher, Sam, and Paul Novosad. "Rural roads and local economic development." American economic review 110.3 (2020): 797-823.
 
